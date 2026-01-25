@@ -1,0 +1,77 @@
+<div class="col-lg-12 mb-2">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+        <a class="navbar-brand" href="#">輿情大數據</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            <ul class="navbar-nav mr-auto">
+              
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'app_top_keyword:home' %}">熱門關鍵詞分析</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'app_top_person:home' %}">熱門人物排行分析</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'app_top_ner:home' %}">NER熱門分析</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'app_top_yesterday:home' %}">每月最夯電影</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'app_top_research:home' %}">查詢摘要</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{%url 'app_user_keyword:home' %}">分析關鍵詞熱度分析</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'namespace_user_keyword_association:home' %}">全文檢索與關聯新聞分析</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'namespace_sentiment_bert:home' %}"
+                      >新聞或文章情緒分類</a>
+                  </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'namespace_user_keyword_sentiment:home' %}">你的關鍵詞情緒分析</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'app_stream:home' %}">串流平台比較</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'app_netflix:home' %}">Netflix聲量</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'app_correlation:home' %}">線性關係</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'namespace_news_rcmd_bert:home' %}">新聞瀏覽與新聞推薦</a>
+                </li> 
+
+                
+
+                
+
+               
+
+               
+
+            </ul>
+
+        </div>
+    </nav>
+</div>

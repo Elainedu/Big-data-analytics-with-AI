@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新聞分析</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Optional JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>新聞分析</h1>
+        <form id="newsForm" method="post" class="mb-4">
+            <div class="mb-3">
+                <label for="titleOrContent" class="form-label">輸入標題或新聞內容</label>
+                <input type="text" class="form-control" id="titleOrContent" name="titleOrContent" required>
+            </div>
+            <button type="submit" class="btn btn-primary">分析</button>
+        </form>
+
+        <!-- 這裡將顯示分析結果 -->
+        <div id="analysisResult" style="display: none;">
+            <h2 id="newsTitle"></h2>
+            <p id="newsContent"></p>
+            <p id="newsSummary"></p>
+            <p><strong>情緒分析:</strong> <span id="newsSentiment"></span></p>
+            <a id="newsLink" href="#" target="_blank">閱讀原文</a>
+            <div id="keywordsChartContainer"></div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $('#newsForm').submit(function(event) {
+                event.preventDefault();
+                var titleOrContent = $('#titleOrContent').val();
+
+                // 這裡的 URL 應該替換成你的 Django 後端處理 URL
+                $.ajax({
+                    type: 'POST',
+                    url: "http://127.0.0.1:8000//topresearch/api_get_topResearch/", // Django 後端 URL
+                    data: {
+                        "title_or_content": titleOrContent,
+                        
+                    },
+                    success: function(response) {
+                        // 根據響應更新頁面元素
+                        $('#newsTitle').text(response.title);
+                        $('#newsContent').text(response.content);
+                        $('#newsSummary').text(response.summary);
+                        $('#newsSentiment').text(response.sentiment);
+                        $('#newsLink').attr('href', response.link);
+
+                        // 將長條圖的 Base64 字符串設置為 img 標籤的 src
+                        var imgHtml = '<img src="data:image/png;base64,' + response.keywords_chart + '" class="img-fluid" />';
+                        $('#keywordsChartContainer').html(imgHtml);
+
+                        // 顯示分析結果容器
+                        $('#analysisResult').show();
+                    },
+                    error: function() {
+                        alert('分析失敗，請重試！');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
