@@ -18,7 +18,7 @@ from collections import Counter
 def load_df_data_v1():
     # global variable
     global  df
-    df = pd.read_csv('app_user_keyword/dataset/cna_news_200_preprocessed.csv', sep='|')
+    df = pd.read_csv('app_user_keyword/dataset/cna_news_preprocessed.csv', sep='|')
 
 # (3) df can be import from app_user_keyword 隔壁app的變數
 # To save memory, we just import df from the other app as follows.
